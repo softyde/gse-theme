@@ -1,0 +1,156 @@
+@use 'settings' as *
+
+
+section
+
+	.article-container
+
+		padding: 0px 30px
+		@media screen and (max-width: 600px)
+			padding: 0px 5px		
+
+	.article
+		background-color: #ddd
+		color: #333
+		padding: 10px
+		margin: 10px
+		display: flex
+		flex-direction: row
+		border-radius: 3px
+		align-items: stretch
+		transition: background-color $duration-transition
+
+		@media screen and (max-width: 500px)
+			flex-direction: column
+
+		&:hover 
+			background-color: #eee
+
+			.content 
+				a
+					text-decoration: underline
+				.divider
+					background-color: $color-accent-4
+			
+
+		.preview
+
+			display: flex
+			flex-direction: column
+			justify-content: space-evenly
+			align-items: center
+
+			.date
+				font-family: 'Playfair Display', serif
+				font-style: italic
+				font-size: 20px
+				color: #888
+				min-width: 200px
+				text-align: center
+
+		.content
+
+			padding: 10px
+			display: flex
+			flex-direction: column
+			align-items: flex-start
+			justify-content: space-evenly
+			width: 100%
+		
+
+
+			.summary-container
+	
+				display: flex
+				flex-direction: row
+				align-items: stretch
+				justify-content: center
+				align-items: center
+	
+				.quotes
+					font-size: 90px
+					font-family: 'Playfair Display', serif
+					font-style: italic
+					font-weight: 200
+					padding: 10px
+					color: #888
+					@media screen and (max-width: 500px)
+						display: none
+		
+				.summary 
+					padding: 5px
+
+					*:not(i.las)
+						font-family: 'Playfair Display', serif
+						font-style: italic
+						//display: inline
+
+					a
+						color: inherit
+
+					h1, h2, h3, h4
+						font-family: 'Roboto', sans-serif
+						font-style: normal
+						font-size: 20px
+						font-weight: 400
+						margin-top: 5px
+						margin-bottom: 10px
+
+					img
+						width: 100px
+						height: 100px
+
+					table 
+						margin: 10px 0
+						border-collapse: collapse
+						border-radius: 3px
+
+						th,td
+							padding: 15px
+
+						@media screen and (max-width: 500px) 
+							padding: 5px
+							font-size: 14px
+
+                
+						thead
+							color: #f4f4f4
+							background-color: $color-accent-3
+                        
+							th
+								font-family: $fontfamily-serif
+								font-style: italic
+								font-size: 20px
+								font-weight: 200
+								@media screen and (max-width: 500px) 
+									font-size: 14px
+
+                
+						tbody
+							tr
+								background-color: lighten($color-accent-2, 25%)
+								&:nth-child(odd)
+									background-color: lighten($color-accent-1, 25%)
+								td
+									color: #333
+
+
+			.divider
+				width: 100%
+				height: 1px
+				margin: 5px 0
+				background-color: $color-accent-2
+				transition: background-color $duration-transition
+
+			.page-link
+				color: #888
+				font-family: 'Roboto', sans-serif
+				font-size: 18px		
+			
+				a
+					transition: color $duration-transition
+					color: inherit
+					
+					&:hover
+						color: #333
+

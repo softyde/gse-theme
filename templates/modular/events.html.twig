@@ -1,0 +1,18 @@
+<div class="event-container">
+
+	<div class="title">{{ page.title }}</div>
+
+	<div class="events">
+	{% for p in page.collection %}
+
+		<div class="event">
+			<div class="month">{{ p.date|localizeddate('long', 'none', 'de', 'Europe/Berlin', 'MMM') }}</div>
+			<div class="day">{{ p.date|localizeddate('long', 'none', 'de', 'Europe/Berlin', 'dd') }}</div>
+			<div class="weekday">{{ p.date|localizeddate('long', 'none', 'de', 'Europe/Berlin','EEEE') }}</div>
+			<div class="divider"></div>
+			<a href="{{ p.url }}" class="title">{{ p.title }}</a>
+		</div>
+
+	{% endfor %}	
+	</div>        
+</div>

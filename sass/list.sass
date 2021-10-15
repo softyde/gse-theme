@@ -1,0 +1,144 @@
+@use 'settings' as *
+@use 'core' 
+@use 'navigation'
+@use 'article'
+@use 'events'
+
+main 
+	height: 150vh
+	max-height: 100%
+	overflow-x: hidden
+	perspective: 1px
+	perspective-origin: center top
+	transform-style: preserve-3d
+
+	background-color: #f4f4f4
+
+section
+
+
+
+	.article-container
+		
+		padding: 0
+		
+		.article
+			background-color: inherit
+			&:hover
+				background-color: #eee
+		
+
+
+	overflow: hidden
+	//min-height: 100vh
+	transform: translateZ(0)
+	background-color: inherit
+	margin-top: 120px
+	background-color: #f4f4f4
+	color: #333
+
+	padding: 40px 80px
+	@media screen and (max-width: 800px) 
+		padding: 20px 10px
+
+
+
+	.metadata
+ 
+		color: #888
+		display: flex
+		//padding: 0px 5px 5px 5px
+		flex-direction: row
+		justify-content: center
+		align-items: center
+
+		@media screen and (max-width: 600px) 
+			flex-direction: column
+
+		> *:first-child
+			margin-right: 40px
+			@media screen and (max-width: 600px) 
+				margin-right: 0
+
+		.fill
+			flex-grow: 1
+
+		.breadcrumb
+			padding: 5px
+
+		.title
+			font-family: $fontfamily-serif
+			font-size: 40px
+			font-style: italic
+			font-weight: 200
+			position: relative
+			top: -8px
+
+		a
+			color: inherit
+			&:hover 
+				text-decoration: underline
+
+
+		.pagination
+
+			padding: 5px
+			.page
+				color: #f4f4f4
+				background-color: $color-accent-3
+				border-radius: 50px
+				padding: 2px 8px
+				&.current 
+					color: #333
+					background-color: $color-accent-2
+		
+		.categories
+
+			padding: 5px
+		
+			> *
+				margin: 3px
+				padding: 3px 10px
+				border-radius: 3px
+				background-color: $color-accent-1
+				color: #f4f4f4
+
+	
+	.divider
+		height: 20px
+		width: 100%
+		display: flex
+		flex-direction: row
+
+		div
+			height: 100%
+			flex-grow: 1
+			background-color: red
+
+		div:nth-child(1)
+			background-color: $color-accent-1
+		div:nth-child(2)
+			background-color: $color-accent-2
+		div:nth-child(3)
+			background-color: $color-accent-3
+		div:nth-child(4)
+			background-color: $color-accent-4
+	
+	.content-container
+		display: flex
+		flex-direction: row
+		margin-top: 20px
+
+		@media screen and (max-width: 800px) 
+			flex-direction: column-reverse
+
+		img
+			max-width: 100%
+
+
+.event:hover .title
+	text-decoration: none
+
+
+
+

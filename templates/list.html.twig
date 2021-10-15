@@ -1,0 +1,87 @@
+{% extends 'partials/list.html.twig' %}
+
+{% set limit = page.header.page_limit %}
+{% set pagination = page.collection.params.pagination %}
+
+{% set collection = page.collection %}
+{% set title = grav.uri.param('category')|default(page.title) %}
+
+
+
+{% set numItems = collection|length %}
+
+{% set maxPage = (numItems / limit)|round(0, 'ceil')  %}
+
+{% set seite = grav.uri.param('seite')|round|default(1) %}
+{% set seite = max(1, min(maxPage, seite)) %}
+
+{% block content %}
+
+	<div class="metadata">
+		<div class="title">{{ page.title }}</div>
+   		<div class="breadcrumb">
+                        <a href="{{ base_url == '' ? '/' : base_url }}">Start</a>
+                        <i class="las la-angle-right"></i>
+                        <span>{{ title }}</span>
+                </div>
+		<div class="fill"></div>
+		<div class="pagination">
+			{% for p in range(1, maxPage) %}
+			<a href="{{ page.url|raw  }}/seite:{{ p }}" class="page {{ (p == seite ? 'current' : '') }}">{{ p }}</a>
+			{% endfor %}
+		</div>
+
+	</div>
+
+
+        <div class="divider">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+        </div>
+
+
+	<div class="article-container">
+	{% for p in collection.slice((seite - 1) * limit, limit) %}
+		
+		{% set first_image = p.media.images|first %}
+                <div class="article">
+
+                        <div class="preview">
+
+				{% if p.parent.header.is_events|default(false)  %}
+					<div class="event">
+						<div class="month">{{ p.date|localizeddate('long', 'none', 'de', 'Europe/Berlin', 'MMM') }}</div>
+                        			<div class="day">{{ p.date|localizeddate('long', 'none', 'de', 'Europe/Berlin', 'dd') }}</div>
+			                        <div class="weekday">{{ p.date|localizeddate('long', 'none', 'de', 'Europe/Berlin','EEEE') }}</div>
+                      				<div class="divider"></div>
+			                        <div class="title">{{ p.title }}</div>
+			                </div>
+				{% else %}
+	                                <div class="date">{{ p.date|localizeddate('long', 'none', 'de', 'Europe/Berlin', 'dd. MMMM yyyy') }}</div>
+        	                        {{ first_image.resize(200,200,'0xddd').html|raw }}
+				{% endif %}
+
+
+
+                        </div>
+
+                        <div class="content">
+                                <div class="summary-container">
+                                        <div class="summary">{{ p.summary|raw }}</div>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="page-link">
+                                        <a href="{{ p.url }}">Weiterlesen...</a>
+                                </div>
+                        </div>
+
+                </div>
+	{% endfor %}
+	</div>
+
+
+
+
+{% endblock %}

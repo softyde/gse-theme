@@ -1,0 +1,123 @@
+name: Grundschule Am Egelpfuhl Theme
+slug: gse-theme
+type: theme
+version: 0.1.0
+description: Grundschule Am Egelpfuhl Theme
+icon: graduation-cap
+author:
+  name: Philipp Anné
+  email: philipp@annee.de
+homepage: https://github.com/philipp-ann/grav-theme-gse-theme
+demo: http://demo.yoursite.com
+keywords: grav, theme, grundschule, egelpfuhl, templin, uckermark
+bugs: https://github.com/philipp-ann/grav-theme-gse-theme/issues
+readme: https://github.com/philipp-ann/grav-theme-gse-theme/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+form:
+  validation: loose
+  fields:
+     contact.address:
+        type: fieldset
+        title: Kontaktdaten
+        info: der Schule
+        text: Diese Daten werden im Header der Seite angezeigt
+        icon: address-book       # Fork Awesome icons system (see : forkaweso.me).
+        collapsed: true      # Initial state of fieldset (see collapsible option)
+        collapsible: true    # Whether one can expand the fieldset or not
+        fields:  
+           contact.address.label:
+              type: text
+              label: Anschrift
+           contact.address.url:
+              type: text
+              label: Anschrift (Link)
+           contact.phone.label:
+              type: text
+              label: Telefon
+           contact.phone.url:
+              type: text
+              label: Telefon (Link)
+           contact.mail.label:
+              type: text
+              label: EMail
+           contact.mail.url:
+              type: text
+              label: EMail (Link)        
+     nav.fieldset:
+        type: fieldset
+        title: Navigation
+        info: der Startseite
+        icon: bookmark
+        collapsed: true
+        collapsible: true
+        fields:
+           nav.items:
+              type: list
+              label: Navigation
+              fields:
+                 .icon:
+                    type: text
+                    label: Icon
+                 .label:
+                    type: text
+                    label: Überschrift
+                 .description:
+                    type: text
+                    label: Beschreibung
+                 .filter:
+                    type: pages
+                    label: Page
+                    show_root: false
+                    show_modular: false
+                 .taxonomy:
+                    type: taxonomy
+                    label: Taxonomy
+                    multiple: false
+     footer.fieldset:
+        type: fieldset
+        title: Informationen
+        info: der Fußzeile
+        icon: id-card
+        collapsed: true
+        collapsible: true
+        fields:
+           footer.items:
+              type: list
+              label: Textblock
+              fields:
+                 .label:
+                    type: text
+                    label: Beschriftung
+           footer.images:
+              type: list
+              label: Logos
+              fields:
+                 .url:
+                    type: text
+                    label: Link
+                 .image:
+                    type: filepicker
+                    folder: 'theme://images/footer'
+                    label: Logo
+                    preview_images: true
+                    accept:
+                       - .png
+                       - .jpg
+                       - .jpeg
+     developer:
+        type: fieldset
+        title: Entwicklerdaten
+        info: für API Zugriffe
+        icon: cloud       # Fork Awesome icons system (see : forkaweso.me).
+        collapsed: true      # Initial state of fieldset (see collapsible option)
+        collapsible: true    # Whether one can expand the fieldset or not
+        fields:  
+           .adobe.clientid:
+              type: text
+              label: Adobe Client-ID
+                       
+

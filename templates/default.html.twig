@@ -1,0 +1,97 @@
+{% extends 'partials/base.html.twig' %}
+
+{% set pdf_count = 0 %}
+{% for file in page.media.files %}
+	{% set mediatype = file.mime %}
+	{% if ('pdf' in mediatype) %}
+		{% set pdf_count = pdf_count + 1 %}   
+	{% endif %}
+{% endfor %}
+
+{% block content %}
+
+	<div class="metadata">
+	
+		{% if page.header.hide_date != true %}
+		<div class="date">{{ page.date|localizeddate('long', 'none', 'de', 'Europe/Berlin', 'dd.MM.yyyy') }}</div>
+		{% endif %}
+
+		<div class="breadcrumb">
+			<a href="{{ base_url == '' ? '/' : base_url }}">Start</a>
+			<i class="las la-angle-right"></i>
+			<a href="{{ page.parent.url|raw }}">{{ page.parent().title }}</a>
+
+		</div>
+		<div class="fill"></div>
+
+		<div class="categories">
+		{% for category in page.taxonomy.category %}
+			<a href="{{ pages.find('/inhalt').url }}/category:{{ category|e }}">{{ category }}</a>
+		{% endfor %}
+		</div>
+
+
+	</div>
+
+
+
+        <div class="divider">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+        </div>
+
+
+<div class="content-container">
+{% if pdf_count > 0 %}
+	<div class="document-container" data-client-id="{{ grav.theme.config.developer.adobe.clientid|raw }}">
+
+		<div class="title">Dokumente</div>
+
+  {% for file in page.media.files %}
+    {% set mediatype = file.mime %}
+    {% set url = file.url %}
+    {% set filename = file.filename %}
+    {% set type = file.type %}
+    {% if ('pdf' in mediatype) %}
+
+	<div class="pdf-element">
+		<div class="btn-preview-pdf pdf-item" data-filename="{{ filename }}" data-url="{{ url }}">
+			<i class="default lar la-file-pdf"></i>
+			<span class="hover"><i class="las la-search"></i> Lesen</span>
+		</div>
+		<a class="download-link" href="{{ url }}" target="_blank"><i class="las la-external-link-alt"></i>&nbsp;{{ filename }}</a>
+	</div>
+
+   {% endif %}
+  {% endfor %}
+{% endif %}
+
+	</div>
+
+
+	<div>
+	{{ page.content|raw }}
+	</div>
+</div>
+
+	{% if count(page.media.images) > 0 %}
+
+		<div class="image-container">
+
+			<h1><i class="lar la-images"></i> Fotos</h1>
+
+			<div class="gallery">
+			{% for image in page.media.images %}
+				<a href="{{ image.url }}">{{ image.resize(150,150).html|raw}}</a>
+			{% endfor %}
+			</div>
+		</div>
+
+	{% endif %}
+
+
+
+
+{% endblock %}

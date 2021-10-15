@@ -1,0 +1,5 @@
+<section class="{{ page.title }}">
+{% for module in page.collection() %}
+	{{ module.content|raw }}
+{% endfor %}
+</section>

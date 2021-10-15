@@ -1,0 +1,279 @@
+@use 'settings' as *
+@use 'core' 
+@use 'navigation'
+
+main 
+	height: 150vh
+	max-height: 100%
+	overflow-x: hidden
+	perspective: 1px
+	perspective-origin: center top
+	transform-style: preserve-3d
+
+	background-color: #f4f4f4
+
+section
+
+	overflow: hidden
+	//min-height: 100vh
+	transform: translateZ(0)
+	background-color: inherit
+	margin-top: 120px
+	background-color: #f4f4f4
+	color: #333
+
+	padding: 40px 80px
+	@media screen and (max-width: 800px) 
+		padding: 20px 10px
+
+
+	table 
+		margin: 10px 0
+		border-collapse: collapse
+		border-radius: 3px
+
+		th,td
+			padding: 15px
+			@media screen and (max-width: 500px) 
+				padding: 5px
+				font-size: 14px
+
+		thead
+			color: #f4f4f4
+			background-color: $color-accent-3
+			th
+				font-family: $fontfamily-serif
+				font-style: italic
+				font-size: 20px
+				font-weight: 200
+				@media screen and (max-width: 500px) 
+					font-size: 14px
+
+		tbody
+			tr
+				background-color: lighten($color-accent-2, 25%)
+				&:nth-child(odd)
+					background-color: lighten($color-accent-1, 25%)
+				td
+					color: #333
+
+	h1, h2, h3, h4, h5
+		font-family: 'Playfair Display', serif
+		font-size: 36px
+		font-weight: 200
+		margin-top: 20px
+		margin-bottom: 5px
+
+	h1:first-child
+		margin-top: 5px
+	
+	h2
+		font-size: 27px
+		margin-top: 15px
+		margin-bottom: 5px	
+
+	h3, h4, h5
+		font-family: 'Roboto', sans-serif
+		font-size: 24px
+
+	
+	ol, ul
+		list-style-position: inside
+
+		li
+			padding-bottom: 9px
+
+	p
+		margin-bottom: 1em
+		font-spacing: 2px
+		line-height: 1.5
+
+	b
+		color: #000000
+
+	a
+		color: #888
+		&:hover
+			color: #333
+			text-decoration: underline	
+
+	.metadata 
+		color: #888
+		display: flex
+		//padding: 0px 5px 5px 5px
+		flex-direction: row
+		justify-content: center
+		align-items: center
+
+
+		@media screen and (max-width: 600px) 
+			flex-direction: column
+
+		> *:first-child
+			margin-right: 40px
+			@media screen and (max-width: 600px) 
+				margin-right: 0
+
+		.fill
+			flex-grow: 1
+
+		.breadcrumb
+			padding: 5px
+
+		.date
+			font-family: $fontfamily-serif
+			font-size: 40px
+			font-style: italic
+			font-weight: 200
+			position: relative
+			top: -8px
+
+		a
+			color: inherit
+			&:hover 
+				text-decoration: underline
+
+		.categories
+
+			padding: 5px
+		
+			> *
+				margin: 3px
+				padding: 3px 10px
+				border-radius: 3px
+				color: #f4f4f4
+				&:nth-child(1)
+					background-color: $color-accent-4
+				&:nth-child(2)
+					background-color: $color-accent-3
+				&:nth-child(3)
+					background-color: $color-accent-2	
+				&:nth-child(4)
+					background-color: $color-accent-1
+	.divider
+		height: 20px
+		width: 100%
+		display: flex
+		flex-direction: row
+
+		div
+			height: 100%
+			flex-grow: 1
+			background-color: red
+
+		div:nth-child(1)
+			background-color: $color-accent-1
+		div:nth-child(2)
+			background-color: $color-accent-2
+		div:nth-child(3)
+			background-color: $color-accent-3
+		div:nth-child(4)
+			background-color: $color-accent-4
+	
+	.content-container
+		display: flex
+		flex-direction: row
+		margin-top: 20px
+
+		@media screen and (max-width: 800px) 
+			flex-direction: column-reverse
+
+		img
+			max-width: 100%
+
+
+	.document-container
+		background-color: #ddd
+		color: #333
+
+		padding: 20px
+		margin: 0 20px 0 0
+		min-width: 145px
+		max-width: 145px
+		//width: 145px
+		border-radius: 3px
+
+		display: flex
+		flex-wrap: wrap
+		flex-direction: column
+		justify-content: flex-start
+		align-items: center
+
+		overflow: hidden
+		@media screen and (max-width: 800px) 
+			flex-direction: row
+			min-width: initial
+			max-width: initial
+			align-items: flex-start
+			justiry-content: space-between
+			margin: 0
+			.pdf-element
+				margin: 0 5px
+		
+		.title
+			font-size: 20px
+			color: #888
+			@media screen and (max-width: 800px) 
+				display: none	
+	
+		.pdf-element
+			padding: 15px 0
+			max-width: 145px
+
+			.download-link 
+				word-break: break-word
+				font-size: 14px
+				color: #333
+				&:hover
+					text-decoration: underline
+
+		.pdf-item
+
+			cursor: pointer
+			border: 1px solid black
+			box-shadow: 3px 3px 5px #333
+
+			width: 105px
+			height: 150px
+			background-color: #ffffff
+			color: $color-accent-4
+			display: flex	
+			align-items: center
+			justify-content: center
+			
+			margin-bottom: 10px
+
+			.default
+				font-size: 48px
+
+			> *
+				display: block
+
+			&:hover 
+				.hover
+					display: initial
+				.default
+					display: none
+
+			.hover
+				display: none
+
+
+footer
+	background-color: #333
+	color: #f4f4f4
+	font-size: 14px
+	display: flex
+	padding: 60px 30px 30px 30px
+	flex-direction: row
+	align-items: flex-start
+	justify-content: space-around
+
+	.block
+		display: flex
+		flex-direction: column
+
+
+
+
+

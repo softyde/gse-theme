@@ -1,0 +1,25 @@
+<header>
+{% for p in page.collection %}
+	{% set first_image = p.media.images|first %}
+	<div class="image preload" style="background-image: url('{{ first_image.url|e }}');">
+		<div class="title">{{ p.header.title }}</div>
+		<div class="btn-scroll-down"><i class="las la-chevron-circle-down"></i></div>	
+	</div>
+{% endfor %}
+</header>
+<section>
+
+	<div class="groups">
+
+		{% set navItems = grav.theme.config.nav.items %}
+		{% for item in navItems %}
+			<a class="link" href="{{ grav.pages.find(item.filter).url|raw}}{{ buildTaxonomy(item.taxonomy) }}">
+				<div class="title">{{ item.label|raw }}</div>
+				<div class="icon"><i class="la {{ item.icon|raw }}"></i></div>
+				<div class="description">{{ item.description|raw }}</div>
+			</a>
+		{% endfor %}
+
+	</div>
+
+</section>

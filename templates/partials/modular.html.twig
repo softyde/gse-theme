@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="{{ (grav.language.getActive ?: grav.config.site.default_lang)|e }}">
+<head>
+{% block head %}
+    <meta charset="utf-8" />
+    <title>{{ site.title|e }}</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" href="{{ url('theme://images/logo.png')|e }}" />
+    <link rel="canonical" href="{{ page.canonical(true)|e }}" />
+
+{% endblock head %}
+
+{% block stylesheets %}
+    {% do assets.addCss('theme://css/fonts.css', 100) %}
+    {% do assets.addCss('theme://css/modular.css', 98) %}
+    {% do assets.addCss('theme://line-awesome/css/line-awesome.min.css', 100) %}
+{% endblock %}
+
+{% block javascripts %}
+
+    {% do assets.addJs('theme://js/smoothscroll.min.js', {group:'bottom'}) %}
+    {% do assets.addJs('theme://js/modular.js', {group:'bottom'}) %}
+
+{% endblock %}
+
+{% block assets deferred %}
+    {{ assets.css()|raw }}
+    {{ assets.js()|raw }}
+{% endblock %}
+</head>
+<body id="top" class="{{ page.header.body_classes|e }}">
+
+{% include 'partials/navigation.html.twig' %}
+
+{% block body %}
+    <main>
+
+	{% block content %}
+	{% endblock %}
+
+	<footer>
+		<div class="images">
+			{% for img in grav.theme.config.footer.images %}
+				<a href="{{ img.url|raw }}"><img src="{{ theme_url ~ "/images/footer/" ~ img.image|e }}" /></a>
+			{% endfor %}
+		</div>
+
+
+		<div class="block">
+			<div><a href="{{ pages.find("/information/impressum").url|raw }}">Impressum</a></div>
+			<div><a href="{{ pages.find("/information/datenschutz").url|raw }}">Datenschutz</a></div>	
+		</div>
+		<div class="block">
+			{% for item in grav.theme.config.footer.items %}
+  				<div>{{ item.label|raw }}</div>
+			{% endfor %}
+		</div>
+	</footer>
+
+
+    </main>
+{% endblock %}
+
+{% block bottom %}
+    {{ assets.js('bottom')|raw }}
+{% endblock %}
+
+</body>
+</html>

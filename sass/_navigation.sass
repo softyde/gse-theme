@@ -1,0 +1,119 @@
+@use 'settings' as *
+
+nav
+	display: block	
+	width: calc(100vw - 0px)
+	position: fixed
+	z-index: 10
+
+	#info-header
+		background-color: #333
+		color: #f4f4f4
+		height: 60px
+		display: flex
+		align-items: center
+		padding: 0 20px
+
+		.title 
+
+			color: inherit
+			font-family: 'Playfair Display', serif
+			font-size: 30px
+			font-weight: 200
+
+			@media screen and (max-width: 650px) 
+				font-size: 25px
+			@media screen and (max-width: 500px) 
+				font-size: 15px
+		
+		.fill
+			flex-grow: 1
+
+		.contact
+			color: #f4f4f4
+			border-color: #f4f4f4
+			display: flex
+			flex-direction: row
+			align-items: center
+
+			&:not(:last-child) 
+				margin-right: 40px
+
+			transition: color $duration-transition, border-color $duration-transition
+
+			@media screen and (max-width: 1150px) 
+				&:not(:last-child)
+					margin-right: 20px
+				.text
+					display: none
+
+			&:hover 
+				color: $color-accent-3
+				border-color: $color-accent-3
+
+			.icon
+				margin-right: 5px
+				font-size: 20px
+				width: 40px
+				height: 40px
+				border-width: 1px
+				border-style: solid
+				border-color: inherit
+				border-radius: 50px
+				display: flex
+				align-items: center
+				justify-content: center
+			.text
+				margin-left: 5px
+				padding-left: 5px
+				border-color: inherit
+				border-left-width: 1px
+				border-style: solid
+				font-size: 14px
+				font-weight: 200
+
+
+
+	#nav-header
+		border-bottom: 1px solid #333
+		background-color: #f4f4f4
+		color: #333
+		opacity: 0.9
+		height: 60px
+		display: flex
+		align-items: center
+		justify-content: center
+
+		.link 
+			display: flex
+			font-size: 18px
+			cursor: pointer
+			margin: 0px 20px
+			transition: border $duration-transition
+			color: #333
+		
+			.icon
+				padding-right: 5px
+
+		.link:nth-child(4) .icon 
+			color: #6abdca
+		.link:nth-child(3) .icon 
+			color: #64b986
+		.link:nth-child(2) .icon 
+			color: #eab840
+		.link:nth-child(1) .icon 
+			color: #ee725d
+
+		.link:hover:nth-child(4) .text
+			border-top: 2px solid #6abdca 
+			border-bottom: 2px solid #6abdca 
+		.link:hover:nth-child(3) .text
+			border-top: 2px solid #64b986 
+			border-bottom: 2px solid #64b986 
+		.link:hover:nth-child(2) .text
+			border-top: 2px solid #eab840 
+			border-bottom: 2px solid #eab840 
+		.link:hover:nth-child(1) .text
+			border-top: 2px solid #ee725d 
+			border-bottom: 2px solid #ee725d 			
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="{{ (grav.language.getActive ?: grav.config.site.default_lang)|e }}">
+<head>
+{% block head %}
+    <meta charset="utf-8" />
+    <title>{% if header.title %}{{ header.title|e }} | {% endif %}{{ site.title|e }}</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <link rel="icon" type="image/png" href="{{ url('theme://images/logo.png')|e }}" />
+    <link rel="canonical" href="{{ page.canonical(true)|e }}" />
+
+{% endblock head %}
+
+{% block stylesheets %}
+    {% do assets.addCss('theme://css/fonts.css', 100) %}
+    {% do assets.addCss('theme://css/simple-lightbox.min.css', 96) %}
+    {% do assets.addCss('theme://css/default.css', 90) %}
+    {% do assets.addCss('theme://line-awesome/css/line-awesome.min.css', 95) %}
+{% endblock %}
+
+{% block javascripts %}
+
+    {% do assets.addJs('theme://js/simple-lightbox.min.js', 90) %}
+    {% do assets.addJs('https://documentcloud.adobe.com/view-sdk/main.js', 90) %}
+    {% do assets.addJs('theme://js/smoothscroll.min.js', {group:'bottom'}) %}
+    {% do assets.addJs('theme://js/default.js', {group:'bottom'}) %}
+
+{% endblock %}
+
+{% block assets deferred %}
+    {{ assets.css()|raw }}
+    {{ assets.js()|raw }}
+{% endblock %}
+</head>
+<body id="top" class="{{ page.header.body_classes|e }}">
+
+	{% include 'partials/navigation.html.twig' %}
+
+	<main>
+
+
+		{% block body %}
+   		<section id="body">
+			{% block content %}{% endblock %}
+	    	</section>
+		{% endblock %}
+
+
+{% block footer %}
+
+
+{% endblock %}
+
+	</main>
+
+{% block bottom %}
+    {{ assets.js('bottom')|raw }}
+{% endblock %}
+
+</body>
+</html>
