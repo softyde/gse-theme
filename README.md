@@ -1,7 +1,10 @@
-# Gse Theme Theme
+# Grav Theme "Grundschule Am Egelpfuhl Templin"
 
-The **Gse Theme** Theme is for [Grav CMS](http://github.com/getgrav/grav).  This README.md file should be modified to describe the features, installation, configuration, and general usage of this theme.
+The **Gse** Theme is for [Grav CMS](http://github.com/getgrav/grav). 
+
 
 ## Description
 
-Grundschule Am Egelpfuhl Theme
+Grundschule Am Egelpfuhl Templin
+
+![Preview](./screenshot.jpg)
