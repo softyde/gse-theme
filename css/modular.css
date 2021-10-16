@@ -263,13 +263,31 @@ header .btn-scroll-down {
 header .btn-scroll-down:hover {
   color: #eab840;
 }
-header > div:not(:nth-last-child(-n+2)) {
+header div.showcase-counter {
+  position: absolute;
+  bottom: 15%;
+  display: flex;
+}
+header div.showcase-counter div {
+  width: 10px;
+  height: 10px;
+  background-color: #30303080;
+  border: 1px solid #f4f4f4;
+  border-radius: 20px;
+  margin: 10px;
+  box-shadow: 0px 0px 5px #333;
+  transition: background-color 1s linear;
+}
+header div.showcase-counter div.active {
+  background-color: #f4f4f480;
+}
+header .image-container .image:not(:nth-last-child(-n+2)) {
   display: none;
 }
-header > div.preload:not(:last-child) {
+header .image-container .image.preload:not(:last-child) {
   display: none;
 }
-header .image {
+header .image-container .image {
   position: absolute;
   left: 0;
   top: 0;
@@ -282,7 +300,7 @@ header .image {
   justify-content: center;
   flex-direction: column;
 }
-header .image div {
+header .image-container .image div {
   font-size: 50px;
   color: #f4f4f4;
   font-weight: 800;
@@ -292,11 +310,11 @@ header .image div {
   opacity: 0.9;
 }
 @media screen and (max-width: 500px) {
-  header .image .title {
+  header .image-container .image .title {
     font-size: 30px;
   }
 }
-header div.text {
+header .image-container div.text {
   color: white;
   font-size: 100px;
   font-weight: 100;

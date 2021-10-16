@@ -15,7 +15,10 @@ for(var i = 0; i < scrollDownBtnList.length; i++) {
         document.querySelector('main').scrollTo({top: scrollTopPosition, left: 0, behavior: 'smooth'}); });
 }
 
-const headerEl = document.querySelector('header');
+const imageContainerEl = document.querySelector('header .image-container');
+
+
+document.querySelector('header .showcase-counter div:first-child').classList.add('active');
 
 window.setTimeout(function() {
 
@@ -26,29 +29,38 @@ window.setTimeout(function() {
 
 window.setInterval(function() {
 
-    let element = document.querySelector('header > div:last-child');   
+    let element = document.querySelector('header .image-container .image:last-child');   
     let start, previousTimeStamp;
 
     function step(timestamp) {
         if (start === undefined)
             start = timestamp;
         
+        document.querySelector('header .showcase-counter div.active')?.classList.remove('active');
+
         const elapsed = timestamp - start;
 
         if (previousTimeStamp !== timestamp) {
-            // Math.min() is used here to make sure the element stops at exactly 200px
             const count = (100 - Math.min(0.05 * elapsed, 100)) / 100;
             element.style.opacity = count;
         }
 
-        if (elapsed < 2000) { // Stop the animation after 2 seconds
+        if (elapsed < 2000) { 
+
             previousTimeStamp = timestamp
             window.requestAnimationFrame(step);
+
         } else {
         
             element.remove();
             element.style.opacity = 1;
-            headerEl.prepend(element);
+            imageContainerEl.prepend(element);
+
+
+
+            let currentEl = document.querySelector('header .image-container .image:last-child');
+            let index = currentEl.dataset.index;
+            document.querySelector('header .showcase-counter div[data-index="' + index + '"]').classList.add('active');
         }
     }
 

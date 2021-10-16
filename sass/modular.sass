@@ -33,46 +33,67 @@ header
 		&:hover 
 			color: $color-accent-3
 
-	> div:not(:nth-last-child(-n+2))
-		display: none
-
-	> div.preload:not(:last-child)
-		display: none
-
-	.image
+	div.showcase-counter
 		position: absolute
-		left: 0
-		top: 0
-		background-size: cover
-		background-position: center center
-		height: 100%
-		width: 100%
+		bottom: 15%
 		display: flex
-		align-items: center
-		justify-content: center
-		flex-direction: column
 
-		div
-			font-size: 50px
-			color: #f4f4f4
-			font-weight: 800
-			padding: 0px 20px
-			text-align: center
-			text-shadow: 0px 0px 5px #222
-			opacity: 0.90
+		div 
+			width: 10px
+			height: 10px
+			background-color: #30303080
+			border: 1px solid #f4f4f4
+			border-radius: 20px
+			margin: 10px
+			box-shadow: 0px 0px 5px #333
+			transition: background-color 1s linear
 
-
-		.title
-			@media screen and (max-width: 500px)
-				font-size: 30px
+			&.active 
+				background-color: #f4f4f480
 
 
-	div.text 
-		color: white
-		font-size: 100px
-		font-weight: 100
-		font-variant: small-caps
-		letter-spacing: 0.1em
+	.image-container 
+		.image:not(:nth-last-child(-n+2))
+			display: none
+
+		.image.preload:not(:last-child)
+			display: none
+
+
+		.image
+			position: absolute
+			left: 0
+			top: 0
+			background-size: cover
+			background-position: center center
+			height: 100%
+			width: 100%
+			display: flex
+			align-items: center
+			justify-content: center
+			flex-direction: column
+
+			div
+				font-size: 50px
+				color: #f4f4f4
+				font-weight: 800
+				padding: 0px 20px
+				text-align: center
+				text-shadow: 0px 0px 5px #222
+				opacity: 0.90
+	
+
+			.title
+				@media screen and (max-width: 500px)
+					font-size: 30px
+
+
+		div.text 
+			color: white
+			font-size: 100px
+			font-weight: 100
+			font-variant: small-caps
+			letter-spacing: 0.1em
 	
 
 section

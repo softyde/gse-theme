@@ -1,11 +1,20 @@
 <header>
-{% for p in page.collection %}
-	{% set first_image = p.media.images|first %}
-	<div class="image preload" style="background-image: url('{{ first_image.url|e }}');">
-		<div class="title">{{ p.header.title }}</div>
-		<div class="btn-scroll-down"><i class="las la-chevron-circle-down"></i></div>	
+	{% set index = 0 %}
+	<div class="image-container">
+	{% for p in page.collection %}
+		{% set first_image = p.media.images|first %}
+		<div class="image preload" data-index="{{ index }}" style="background-image: url('{{ first_image.url|e }}');">
+			<div class="title">{{ p.header.title }}</div>
+			<div class="btn-scroll-down"><i class="las la-chevron-circle-down"></i></div>	
+		</div>
+		{% set index = index + 1 %}
+	{% endfor %}
 	</div>
-{% endfor %}
+	<div class="showcase-counter">
+		{% for p in range(count(page.collection) - 1, 0, -1) %}
+		<div data-index="{{ p }}"></div>
+		{% endfor %}
+	</div>
 </header>
 <section>
 
