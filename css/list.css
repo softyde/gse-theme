@@ -220,6 +220,14 @@ section .article .preview .date {
   min-width: 200px;
   text-align: center;
 }
+section .article .preview .pdf-item {
+  padding: 40px;
+  margin: 20px;
+  background-color: #f4f4f4;
+  color: #ee725d;
+  font-size: 60px;
+  font-weight: 400;
+}
 section .article .content {
   padding: 10px;
   display: flex;

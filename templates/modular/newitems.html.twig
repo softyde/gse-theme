@@ -5,7 +5,22 @@
 		<div class="article">
 			<div class="preview">
 		        	<div class="date">{{ p.date|localizeddate('long', 'none', 'de', 'Europe/Berlin', 'dd. MMMM yyyy') }}</div>
-		 		{{ first_image.resize(200,200,'0xddd').html|raw }}
+				{% if first_image %}
+		 			{{ first_image.resize(200,200,'0xddd').html|raw }}
+				{% else %}
+
+					{% set pdf_count = 0 %}
+					{% for file in p.media.files %}
+					        {% set mediatype = file.mime %}
+					        {% if ('pdf' in mediatype) %}
+					                {% set pdf_count = pdf_count + 1 %}   
+					        {% endif %}
+					{% endfor %}
+
+					{% if pdf_count > 0 %}
+					<div class="pdf-item"><i class="lar la-file-pdf"></i></div>
+					{% endif %}
+				{% endif %}
 		        </div>
 		        <div class="content">
 				<div class="summary-container">

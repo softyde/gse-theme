@@ -8,9 +8,7 @@ for(var i = 0; i < scrollDownBtnList.length; i++) {
     
         const navHeight = document.querySelector('body nav').clientHeight;
         
-        console.log(navHeight);
         const scrollTopPosition = document.querySelector('body main section').offsetTop - navHeight;
-        console.log(scrollTopPosition);
     
         document.querySelector('main').scrollTo({top: scrollTopPosition, left: 0, behavior: 'smooth'}); });
 }
