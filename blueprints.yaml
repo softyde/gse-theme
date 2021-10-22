@@ -7,11 +7,11 @@ icon: graduation-cap
 author:
   name: Philipp Anné
   email: philipp@annee.de
-homepage: https://github.com/philipp-ann/grav-theme-gse-theme
-demo: http://demo.yoursite.com
+homepage: https://github.com/softyde/gse-theme
+demo: https://egelpfuhlschule.de
 keywords: grav, theme, grundschule, egelpfuhl, templin, uckermark
-bugs: https://github.com/philipp-ann/grav-theme-gse-theme/issues
-readme: https://github.com/philipp-ann/grav-theme-gse-theme/blob/develop/README.md
+bugs: https://github.com/softyde/gse-theme/issues
+readme: https://github.com/softyde/gse-theme/README.md
 license: MIT
 
 dependencies:
