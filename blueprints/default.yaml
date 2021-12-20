@@ -1,0 +1,27 @@
+extends@:
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        options:
+          fields:
+            publishing:
+              fields:
+                header.pinned:
+                  type: toggle
+                  toggleable: true
+                  label: Immer am Anfang
+                  help: Die Seite wird in Listen immer am Anfang angezeigt, unabhängig davon, welches Veröffentlichungsdatum eingetragen ist.
+                  highlight: 0
+                  size: medium
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+                  validate:
+                    type: bool

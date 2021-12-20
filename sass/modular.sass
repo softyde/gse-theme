@@ -11,8 +11,7 @@ main
 	perspective-origin: center top
 	transform-style: preserve-3d
 
-	background-color: #f4f4f4
-	//font: 36px/1.6 Alegreya Sans, serif
+	background-color: $color-default-bg
 
 
 header 
@@ -42,7 +41,7 @@ header
 			width: 10px
 			height: 10px
 			background-color: #30303080
-			border: 1px solid #f4f4f4
+			border: 1px solid $color-default-bg
 			border-radius: 20px
 			margin: 10px
 			box-shadow: 0px 0px 5px #333
@@ -75,7 +74,7 @@ header
 
 			div
 				font-size: 50px
-				color: #f4f4f4
+				color: $color-default-bg
 				font-weight: 800
 				padding: 0px 20px
 				text-align: center
@@ -213,7 +212,7 @@ section
 			align-items: center
 
 			.date
-				font-family: 'Playfair Display', serif
+				font-family: $fontfamily-serif
 				font-style: italic
 				font-size: 20px
 				color: #888
@@ -223,7 +222,7 @@ section
 			.pdf-item
 				padding: 40px
 				margin: 20px
-				background-color: #f4f4f4
+				background-color: $color-default-bg
 				color: $color-accent-4
 				font-size: 60px
 				font-weight: 400
@@ -249,7 +248,7 @@ section
 	
 				.quotes
 					font-size: 90px
-					font-family: 'Playfair Display', serif
+					font-family: $fontfamily-serif
 					font-style: italic
 					font-weight: 200
 					padding: 10px
@@ -261,12 +260,11 @@ section
 					padding: 5px
 
 					*
-						font-family: 'Playfair Display', serif
+						font-family: $fontfamily-serif
 						font-style: italic
-						//display: inline
 
 					h1, h2, h3, h4
-						font-family: 'Roboto', sans-serif
+						font-family: $fontfamily-sansserif
 						font-style: normal
 						font-size: 20px
 						font-weight: 400
@@ -285,7 +283,7 @@ section
 
 			.page-link
 				color: #888
-				font-family: 'Roboto', sans-serif
+				font-family: $fontfamily-sansserif
 				font-size: 18px		
 			
 				a
@@ -306,7 +304,7 @@ section
 
 footer
 	background-color: #333
-	color: #f4f4f4
+	color: $color-default-bg
 	font-size: 14px
 	display: flex
 	padding: 60px 30px 30px 30px
@@ -318,7 +316,7 @@ footer
 		flex-direction: column 
 
 	a
-		color: #f4f4f4
+		color: $color-default-bg
 		&:hover
 			text-decoration: underline
 

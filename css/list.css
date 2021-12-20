@@ -423,6 +423,10 @@ section .article-container {
 section .article-container .article {
   background-color: inherit;
 }
+section .article-container .article.pinned {
+  border: 2px solid #ee725d;
+  background-color: #fad6d0;
+}
 section .article-container .article:hover {
   background-color: #eee;
 }

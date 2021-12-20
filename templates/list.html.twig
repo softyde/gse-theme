@@ -46,7 +46,7 @@
 	{% for p in collection.slice((seite - 1) * limit, limit) %}
 		
 		{% set first_image = p.media.images|first %}
-                <div class="article">
+                <div class="article {{ p.header.pinned|default(false) ? "pinned" : ""}}">
 
                         <div class="preview">
 
