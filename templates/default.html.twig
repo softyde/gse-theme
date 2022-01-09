@@ -8,6 +8,13 @@
 	{% endif %}
 {% endfor %}
 
+{% set img_count = 0 %}
+{% for filename, file in page.media.images %}
+	{% if not (filename starts with '__') %}
+		{% set img_count = img_count + 1 %}   
+	{% endif %}
+{% endfor %}
+
 {% block content %}
 
 	<div class="metadata">
@@ -76,22 +83,20 @@
 	</div>
 </div>
 
-	{% if count(page.media.images) > 0 %}
-
+	{% if img_count > 0 %}
 		<div class="image-container">
 
 			<h1><i class="lar la-images"></i> Fotos</h1>
 
 			<div class="gallery">
-			{% for image in page.media.images %}
-				<a href="{{ image.url }}">{{ image.resize(150,150).html|raw}}</a>
+			{% for filename, image in page.media.images %}
+				{% if not (filename starts with '__') %}
+					<a href="{{ image.url }}">{{ image.resize(150,150).html|raw}}</a>
+				{% endif %}
 			{% endfor %}
 			</div>
 		</div>
-
 	{% endif %}
-
-
 
 
 {% endblock %}
