@@ -19,14 +19,23 @@
                         </a>
                 </div>
                 <div id="nav-header">
-                        <a class="link" href="{{page.find('/schulbetrieb/vertretungsplan').url|raw }}">
-                                <div class="icon"><i class="las la-table"></i></div>
-                                <div class="text">Vertretungsplan</div>
-                        </a>
-                        <a class="link" href="https://brandenburg.cloud" target="_blank">
-                                <div class="icon"><i class="las la-cloud"></i></div>
-                                <div class="text">Schulcloud</div>
-                        </a>
+                  	<div class="link">
+		        	<a href="{{page.find('/schulbetrieb/vertretungsplan').url|raw }}">
+                                	<span class="icon"><i class="las la-table"></i></span>
+                                	<span class="text">Vertretungsplan</span>
+                        	</a>
+			</div>
+                        <div class="link">
+                             	<a href="https://brandenburg.cloud" target="_blank">
+					<span class="icon"><i class="las la-cloud"></i></span>
+                                	<span class="text">Schulcloud</span>
+				</a>
+				<a class="info"
+				href="{{page.find('/schulbetrieb/hilfe-zur-schulcloud').url|raw }}">
+					<span><i class="las la-question-circle"></i></span>
+					<span class="hide">Hilfe</span>
+				</a>
+                        </div>
 
                 </div>
         </nav>

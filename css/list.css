@@ -141,6 +141,21 @@ nav #nav-header .link {
   transition: border 0.25s;
   color: #333;
 }
+nav #nav-header .link a {
+  color: #333;
+}
+nav #nav-header .link a.info {
+  padding-left: 5px;
+  color: #eab840;
+}
+nav #nav-header .link a.info:hover {
+  color: #111;
+}
+@media screen and (max-width: 650px) {
+  nav #nav-header .link .hide {
+    display: none;
+  }
+}
 nav #nav-header .link .icon {
   padding-right: 5px;
 }
@@ -235,6 +250,9 @@ section .article .content {
   align-items: flex-start;
   justify-content: space-evenly;
   width: 100%;
+}
+section .article .content img.avatar {
+  display: none;
 }
 section .article .content .summary-container {
   display: flex;

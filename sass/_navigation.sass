@@ -91,6 +91,18 @@ nav
 			margin: 0px 20px
 			transition: border $duration-transition
 			color: #333
+
+			a
+				color: #333
+
+			a.info 
+				padding-left: 5px
+				color: #eab840
+				&:hover 
+					color: #111
+			@media screen and (max-width: 650px) 
+				.hide
+					display: none
 		
 			.icon
 				padding-right: 5px

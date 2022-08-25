@@ -141,6 +141,21 @@ nav #nav-header .link {
   transition: border 0.25s;
   color: #333;
 }
+nav #nav-header .link a {
+  color: #333;
+}
+nav #nav-header .link a.info {
+  padding-left: 5px;
+  color: #eab840;
+}
+nav #nav-header .link a.info:hover {
+  color: #111;
+}
+@media screen and (max-width: 650px) {
+  nav #nav-header .link .hide {
+    display: none;
+  }
+}
 nav #nav-header .link .icon {
   padding-right: 5px;
 }
@@ -255,6 +270,15 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+header .buttons {
+  display: flex;
+  flex-direction: rows;
+  width: 95vw;
+  justify-content: space-between;
+}
+header .buttons .btn-move {
+  cursor: pointer;
 }
 header .btn-scroll-down {
   cursor: pointer;
@@ -404,58 +428,76 @@ section div.groups > .link:nth-child(4n+0):hover {
 }
 section .article-container {
   padding: 0px 30px;
+  flex-grow: 1;
+}
+section .article-container img.avatar {
+  display: none;
 }
 @media screen and (max-width: 600px) {
   section .article-container {
     padding: 0px 5px;
   }
 }
-section .article {
+section .article.gallery {
   background-color: #ddd;
   color: #333;
   padding: 10px;
   margin: 10px;
   display: flex;
-  flex-direction: row;
-  border-radius: 3px;
-  align-items: stretch;
+  flex-direction: column;
   transition: background-color 0.25s;
 }
-@media screen and (max-width: 500px) {
-  section .article {
-    flex-direction: column;
-  }
-}
-section .article:hover {
+section .article.gallery:hover {
   background-color: #eee;
 }
-section .article:hover .content a {
+section .article.gallery:hover .content a {
   text-decoration: underline;
 }
-section .article:hover .content .divider {
+section .article.gallery:hover .content .divider {
   background-color: #ee725d;
 }
-section .article .preview {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+section .article.gallery .image-container {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
 }
-section .article .preview .date {
+section .article.gallery .image-container .inner-container {
+  position: absolute;
+  left: 0;
+  transition: left 2s ease-in-out;
+  display: flex;
+  flex-direction: row;
+}
+section .article.gallery .image-container .inner-container .image {
+  display: inline-block;
+  transition: opacity 0.5s linear, transform 0.5s linear;
+  opacity: 0.5;
+  transform: scale(0.9);
+}
+section .article.gallery .image-container .inner-container .image.active {
+  transform: scale(1);
+  opacity: 1;
+}
+section .article.gallery .title {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: center;
+}
+section .article {
+  border-radius: 3px;
+}
+section .article .date {
   font-family: "Playfair Display", serif;
   font-style: italic;
   font-size: 20px;
   color: #888;
   min-width: 200px;
   text-align: center;
-}
-section .article .preview .pdf-item {
-  padding: 40px;
-  margin: 20px;
-  background-color: #f4f4f4;
-  color: #ee725d;
-  font-size: 60px;
-  font-weight: 400;
 }
 section .article .content {
   padding: 10px;
@@ -522,6 +564,44 @@ section .article .content .page-link a {
 }
 section .article .content .page-link a:hover {
   color: #333;
+}
+section .article.plain {
+  background-color: #ddd;
+  color: #333;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  transition: background-color 0.25s;
+}
+@media screen and (max-width: 500px) {
+  section .article.plain {
+    flex-direction: column;
+  }
+}
+section .article.plain:hover {
+  background-color: #eee;
+}
+section .article.plain:hover .content a {
+  text-decoration: underline;
+}
+section .article.plain:hover .content .divider {
+  background-color: #ee725d;
+}
+section .article.plain .preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+section .article.plain .preview .pdf-item {
+  padding: 40px;
+  margin: 20px;
+  background-color: #f4f4f4;
+  color: #ee725d;
+  font-size: 60px;
+  font-weight: 400;
 }
 
 .group-content {

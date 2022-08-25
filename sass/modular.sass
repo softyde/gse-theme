@@ -26,6 +26,15 @@ header
 	align-items: center
 	justify-content: center
 
+	.buttons 
+		display: flex
+		flex-direction: rows
+		width: 95vw
+		justify-content: space-between
+
+		.btn-move
+			cursor: pointer
+
 	.btn-scroll-down
 		cursor: pointer
 		transition: color $duration-transition
@@ -176,23 +185,23 @@ section
 
 	.article-container
 
+		img.avatar
+			display: none
+
 		padding: 0px 30px
+		flex-grow: 1
+
 		@media screen and (max-width: 600px)
 			padding: 0px 5px		
 
-	.article
+	.article.gallery
 		background-color: #ddd
 		color: #333
 		padding: 10px
 		margin: 10px
 		display: flex
-		flex-direction: row
-		border-radius: 3px
-		align-items: stretch
+		flex-direction: column
 		transition: background-color $duration-transition
-
-		@media screen and (max-width: 500px)
-			flex-direction: column
 
 		&:hover 
 			background-color: #eee
@@ -202,30 +211,52 @@ section
 					text-decoration: underline
 				.divider
 					background-color: $color-accent-4
-			
 
-		.preview
+		.image-container
 
-			display: flex
-			flex-direction: column
-			justify-content: space-evenly
-			align-items: center
+			height: 200px
+			overflow: hidden
+			position: relative
 
-			.date
-				font-family: $fontfamily-serif
-				font-style: italic
-				font-size: 20px
-				color: #888
-				min-width: 200px
-				text-align: center
+			.inner-container 
+				position: absolute
+				left: 0
+				transition: left 2s ease-in-out
 
-			.pdf-item
-				padding: 40px
-				margin: 20px
-				background-color: $color-default-bg
-				color: $color-accent-4
-				font-size: 60px
-				font-weight: 400
+				display: flex
+				flex-direction: row
+
+				.image
+					display: inline-block
+					transition: opacity 0.5s linear, transform 0.5s linear
+					opacity: 0.5
+					transform: scale(0.9)
+					
+					&.active
+						transform: scale(1)
+						opacity: 1
+
+		.title 
+			font-family: $fontfamily-sansserif
+			font-style: normal
+			font-size: 20px
+			font-weight: 400
+			margin-top: 5px
+			margin-bottom: 10px
+			color: #333
+			text-align: center
+
+	.article 
+
+		border-radius: 3px
+
+		.date
+			font-family: $fontfamily-serif
+			font-style: italic
+			font-size: 20px
+			color: #888
+			min-width: 200px
+			text-align: center
 
 		.content
 
@@ -292,6 +323,50 @@ section
 					
 					&:hover
 						color: #333
+
+
+	.article.plain
+		background-color: #ddd
+		color: #333
+		padding: 10px
+		margin: 10px
+		display: flex
+		flex-direction: row
+
+		align-items: stretch
+		transition: background-color $duration-transition
+
+		@media screen and (max-width: 500px)
+			flex-direction: column
+
+		&:hover 
+			background-color: #eee
+
+			.content 
+				a
+					text-decoration: underline
+				.divider
+					background-color: $color-accent-4
+			
+
+		.preview
+
+			display: flex
+			flex-direction: column
+			justify-content: space-evenly
+			align-items: center
+
+
+
+			.pdf-item
+				padding: 40px
+				margin: 20px
+				background-color: $color-default-bg
+				color: $color-accent-4
+				font-size: 60px
+				font-weight: 400
+
+
 
 .group-content
 	display: flex

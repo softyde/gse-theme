@@ -2,40 +2,75 @@
 
 	{% for p in page.collection %}
 
-		{% set first_image = p.media.images|first %}
-		<div class="article">
-			<div class="preview">
-		        	<div class="date">{{ p.date|localizeddate('long', 'none', 'de', 'Europe/Berlin', 'dd. MMMM yyyy') }}</div>
-				{% if first_image %}
-		 			{{ first_image.resize(200,200,'0xddd').html|raw }}
-				{% else %}
+		{% if p.header.gallery %}
+		{# --- GALERIE-ANSICHT --- #}
 
-					{% set pdf_count = 0 %}
-					{% for file in p.media.files %}
-					        {% set mediatype = file.mime %}
-					        {% if ('pdf' in mediatype) %}
-					                {% set pdf_count = pdf_count + 1 %}   
-					        {% endif %}
-					{% endfor %}
-
-					{% if pdf_count > 0 %}
-					<div class="pdf-item"><i class="lar la-file-pdf"></i></div>
-					{% endif %}
-				{% endif %}
-		        </div>
-		        <div class="content">
-				<div class="summary-container">
-					<div class="quotes">&ldquo;</div>
-		                       	<div class="summary">{{ p.summary|raw }}</div>  
-					<div class="quotes">&rdquo;</div>
-		      		</div>
-				<div class="divider"></div>
-				<div class="page-link">
-					<a href="{{ p.url }}">Weiterlesen...</a>
+			<div class="article gallery">
+				<div class="header">
+		        		<div class="date">{{ p.date|localizeddate('long', 'none', 'de', 'Europe/Berlin', 'dd. MMMM yyyy') }}</div>
+					<div class="title">{{ p.title }}</div>
 				</div>
+				<div class="image-container"
+				data-items="{{ p.media.images|length }}"
+				data-current="0" data-dir="up">
+					<div class="inner-container" style="width:
+{{200 * p.media.images|length}}px; height: 200px;">
+						{% for img in p.media.images %}
+						<div class="image">
+							{{ img.resize(200,200,'0xddd').html|raw }}
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				
+				<div class="content">
+					<div class="divider"></div>
+					<div class="page-link">
+						<a href="{{ p.url }}">Weiterlesen...</a>
+					</div>
+				</div>
+
 			</div>
+
+		{% else %}
+		{# --- ARTIKEL-ANSICHT --- #}
+
+			{% set first_image = p.media.images|filter(i => not(i.filename starts with '___'))|first %}
+			<div class="article plain">
+				<div class="preview">
+		        		<div class="date">{{ p.date|localizeddate('long', 'none', 'de', 'Europe/Berlin', 'dd. MMMM yyyy') }}</div>
+					{% if first_image %}
+			 			{{ first_image.resize(200,200,'0xddd').html|raw }}
+					{% else %}
+
+						{% set pdf_count = 0 %}
+						{% for file in p.media.files %}
+						        {% set mediatype = file.mime %}
+						        {% if ('pdf' in mediatype) %}
+					        	        {% set pdf_count = pdf_count + 1 %}   
+						        {% endif %}
+						{% endfor %}
+
+						{% if pdf_count > 0 %}
+						<div class="pdf-item"><i class="lar la-file-pdf"></i></div>
+						{% endif %}
+					{% endif %}
+			        </div>
+			        <div class="content">
+					<div class="summary-container">
+						<div class="quotes">&ldquo;</div>
+		                       		<div class="summary">{{ p.summary|raw }}</div>  
+						<div class="quotes">&rdquo;</div>
+			      		</div>
+					<div class="divider"></div>
+					<div class="page-link">
+						<a href="{{ p.url }}">Weiterlesen...</a>
+					</div>
+				</div>
 		
-		</div>
+			</div>
+
+		{% endif %}
 	{% endfor %}	
         
 </div>

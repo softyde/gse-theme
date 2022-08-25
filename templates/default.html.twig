@@ -8,17 +8,12 @@
 	{% endif %}
 {% endfor %}
 
-{% set img_count = 0 %}
-{% for filename, file in page.media.images %}
-	{% if not (filename starts with '__') %}
-		{% set img_count = img_count + 1 %}   
-	{% endif %}
-{% endfor %}
+{% set img_count = page.media.images|filter(a => not(a.filename starts with('__')))|length %}
 
 {% block content %}
 
 	<div class="metadata">
-	
+
 		{% if page.header.hide_date != true %}
 		<div class="date">{{ page.date|localizeddate('long', 'none', 'de', 'Europe/Berlin', 'dd.MM.yyyy') }}</div>
 		{% endif %}
@@ -89,10 +84,8 @@
 			<h1><i class="lar la-images"></i> Fotos</h1>
 
 			<div class="gallery">
-			{% for filename, image in page.media.images %}
-				{% if not (filename starts with '__') %}
-					<a href="{{ image.url }}">{{ image.resize(150,150).html|raw}}</a>
-				{% endif %}
+			{% for image in page.media.images|filter(i => not(i.filename starts with '__')) %} 
+				<a href="{{ image.url }}">{{ image.resize(150,150).html|raw}}</a>
 			{% endfor %}
 			</div>
 		</div>

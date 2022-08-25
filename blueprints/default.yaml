@@ -25,3 +25,15 @@ form:
                     0: PLUGIN_ADMIN.NO
                   validate:
                     type: bool
+                header.gallery:
+                  type: toggle
+                  toggleable: true
+                  label: Als Galerie anzeigen
+                  help: Die Seite wird in der Liste der neuen Beiträge als Galerie dargestellt
+                  highlight: 0
+                  size: medium
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+                  validate:
+                    type: bool
